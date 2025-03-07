@@ -2,7 +2,6 @@ import cors from "cors";
 import express from "express";
 import createError from "http-errors";
 import morgan from "morgan";
-import corsOptions from "../config/cors.js";
 import { successResponse } from "../helper/responseHandler.js";
 import errorHandler from "../middlewares/error-handler.js";
 import feRouter from "../routes/fe.route.js";
@@ -15,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // cors configuration
-app.use(cors(corsOptions));
+app.use(cors());
+// app.use(cors(corsOptions));
 
 // morgan setup
 app.use(morgan("dev"));
